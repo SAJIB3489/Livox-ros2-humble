@@ -47,7 +47,7 @@ apr-1
 ```
 
 
-It will takes some times while the Docker image size is around 3.1GB. After sucessfully build the image, go into the image.
+After sucessfully build the image, go into the image.
 
 ```
 docker run --rm  -it livox_ros2_humble:latest
