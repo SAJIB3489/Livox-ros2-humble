@@ -54,7 +54,7 @@ docker run --rm  -it livox_ros2_humble:latest
 ```
 
 
-### Play Livox avia lidar rosbag file (Optional)
+### Play rosbag file (Optional)
 
 #### Option 1: Raspberry PI with GUI 
 

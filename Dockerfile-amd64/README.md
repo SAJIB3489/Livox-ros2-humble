@@ -54,7 +54,7 @@ After sucessfully build the image, go into the image.
 docker run --rm  -it livox_ros2_humble:latest
 ```
 
-### Play Livox avia lidar rosbag file (Optional)
+### Play rosbag file (Optional)
 
 
 1. Rrun the following command on the terminal
