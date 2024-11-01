@@ -26,7 +26,7 @@ docker build --no-cache -t livox_ros2_humble .
 ```
 
 > [!WARNING]
-> You might get an warning but just ignore it. Something like this.
+> You might get an warning, just ignore it. Something like this.
 
 ```
 --- stderr: livox_ros2_driver
