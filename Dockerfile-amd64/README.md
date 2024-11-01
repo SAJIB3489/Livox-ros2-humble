@@ -25,6 +25,29 @@ docker system prune -a
 docker build --no-cache -t livox_ros2_humble .
 ```
 
+> [!WARNING]
+> You might get an warning but just ignore it. Something like this.
+
+```
+--- stderr: livox_ros2_driver
+CMake Warning (dev) at CMakeLists.txt:31 (find_package):
+  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  CMake variable PCL_ROOT is set to:
+
+    /usr
+
+  For compatibility, CMake is ignoring the variable.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+/usr/include/apr-1.0
+apr-1
+---
+```
+
+
 It will takes some times while the Docker image size is around 3.1GB. After sucessfully build the image, go into the image.
 
 ```

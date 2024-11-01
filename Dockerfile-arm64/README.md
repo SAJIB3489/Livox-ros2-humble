@@ -24,12 +24,6 @@ docker system prune -a
 docker build --no-cache -t livox_ros2_humble .
 ```
 
-It will takes some times while the Docker image size is around 3.1GB. After sucessfully build the image, go into the image.
-
-```
-docker run --rm  -it livox_ros2_humble:latest
-```
-
 > [!WARNING]
 > You might get an warning but just ignore it. Something like this.
 
@@ -50,6 +44,13 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 /usr/include/apr-1.0
 apr-1
 ---
+```
+
+
+It will takes some times while the Docker image size is around 3.1GB. After sucessfully build the image, go into the image.
+
+```
+docker run --rm  -it livox_ros2_humble:latest
 ```
 
 
