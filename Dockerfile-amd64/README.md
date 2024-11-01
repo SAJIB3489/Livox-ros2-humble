@@ -54,105 +54,42 @@ After sucessfully build the image, go into the image.
 docker run --rm  -it livox_ros2_humble:latest
 ```
 
-### Visulization using Livox avia lidar
+### Play Livox avia lidar rosbag file (Optional)
 
-#### Option 1: Raspberry PI with GUI 
 
-1. Download the rosbag file [balcony_5th_floor_avia.bag](https://drive.google.com/file/d/1fD2oRkFPBf_JG3S95ZxVBLpNm6kcRxvw/view?usp=drive_link). It is pretty big file. 
-
-2. Now run the following command on the terminal
+1. Rrun the following command on the terminal
 
 ```
-docker run -it \
-    --network=host \
-    -e DISPLAY=$DISPLAY \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v /home/rosuser/Downloads/:/rosbag \
-    livox_ros2_humble:latest
+docker ps
+xhost +local:docker
+
+
+docker run --name livox_ros2 -it --rm --privileged -e DISPLAY=$DISPLAY --net=host -v $XSOCK -v $XAUTH --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
+-v ~/Music/github/Github/Livox-ros2-humble/bagfiles:/ros2/src/bagfiles/ -v /tmp/.X11-unix/:/tmp/.X11-Unix  livox_ros2_humble  bash
 ```
 
-Replace ``/home/rosuser/Downloads/`` with the actual path to your rosbag file.
 
-3. Inside the container, you can play the rosbag:
+Replace ``~/Music/github/Github/Livox-ros2-humble/bagfiles:/ros2/src/bagfiles/`` with the actual path to your rosbag file.
+
+2. Inside the container, you can play the rosbag:
 
 ```
 source /opt/ros/humble/setup.bash
 source /ros2/install/setup.bash
-cd /rosbag
-ros2 bag play balcony_5th_floor_avia.bag
+cd /src/bagfiles/
+ros2 bag play <rosbag file> --clock
 ```
 
-4. On your host PC (in a new terminal), run RViz2:
+4. Go to another newly open terminal and look the rostopic:
 
 ```
-rviz2
+  ros2 topic list #Shows all the published rostopics
+  ros2 topic echo <topicname> #shows data of specific rostopic <topicname>
 ```
 
-In RViz:
+**Thank you. If you have any error please create an issue.**
 
-Add a ``PointCloud2`` display
-Set the topic to the Livox point cloud topic (typically ``/livox/lidar``)
-Set the Fixed Frame to match your bag data (usually ``livox_frame`` or ``base_link``)
+### Reference
 
-If you have permission issues with X11:
-```
-xhost +local:docker
-```
-
-#### Option 2: Raspberry PI without GUI
-
-If you do not have GUI access for your Raspberry PI, then go to the Raspberry PI using **SSH**, for example. ``ssh -X rosuser@192.168.0.1``.
-
-1. Open a terminal on Raspberry PI and Download the rosbag file using the following steps. Whereas we will use the terminal to download the rosbag file from google drive, we have to go through some additional steps:
-
-```
-pip install gdown
-gdown https://drive.google.com/uc?id=1fD2oRkFPBf_JG3S95ZxVBLpNm6kcRxvw -O balcony_5th_floor_avia.bag
-```
-**OR** You can download the [rosbag file](https://drive.google.com/file/d/1fD2oRkFPBf_JG3S95ZxVBLpNm6kcRxvw/view?usp=drive_link) file on your host PC and then copy the file to the Raspberry PI.
-
-```
-scp -r balcony_5th_floor_avia.bag rosuser@192.168.0.1:/home/rosuser/Downloads/
-```
-
-Here replace ``rosuser@192.168.0.1`` with your Raspberry PI username and IP address. REplace the directory ``/home/rosuser/Downloads/`` with the actual directory of Raspberry PI.
-
-
-2. Now run the following command on the Raspberry PI terminal
-
-```
-docker run -it \
-    --network=host \
-    -e DISPLAY=$DISPLAY \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v /home/rosuser/Downloads/:/rosbag \
-    livox_ros2_humble:latest
-```
-
-Replace ``/home/rosuser/Downloads/`` with the actual path to your rosbag file.
-
-3. Inside the container, you can play the rosbag:
-
-```
-source /opt/ros/humble/setup.bash
-source /ros2/install/setup.bash
-cd /rosbag
-ros2 bag play balcony_5th_floor_avia.bag
-```
-
-4. On your host PC (in a new terminal), run RViz2:
-
-```
-rviz2
-```
-
-In RViz:
-
-Add a ``PointCloud2`` display
-Set the topic to the Livox point cloud topic (typically ``/livox/lidar``)
-Set the Fixed Frame to match your bag data (usually ``livox_frame`` or ``base_link``)
-
-If you have permission issues with X11:
-```
-xhost +local:docker
-```
+https://github.com/Livox-SDK/Livox-SDK
+https://github.com/Duna-System/livox_ros2_driver
