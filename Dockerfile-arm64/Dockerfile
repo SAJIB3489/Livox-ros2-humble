@@ -12,7 +12,8 @@ RUN apt update && apt install -y \
     libssl-dev \
     libcurl4-openssl-dev \
     libpcl-dev ros-humble-pcl-ros \
-    ros-humble-ament-cmake && \
+    ros-humble-ament-cmake \
+    ros-humble-rviz2 && \
     rm -rf /var/lib/apt/lists/*
 
 # Link Volume
@@ -64,4 +65,4 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \
 RUN /bin/bash -c "source /opt/ros/humble/setup.bash && source install/setup.bash"
 
 # Set entrypoint to run ROS2 commands directly
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source ./install/setup.bash && exec bash"]
