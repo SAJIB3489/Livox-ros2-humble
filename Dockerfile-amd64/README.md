@@ -89,7 +89,7 @@ ros2 bag play <rosbag file> --clock
 
 **Thank you. If you have any error please create an issue.**
 
-### Reference
+## References
 
-https://github.com/Livox-SDK/Livox-SDK
-https://github.com/Duna-System/livox_ros2_driver
+- [Livox SDK](https://github.com/SAJIB3489/Livox-SDK.git)
+- [Livox ROS2 Driver](https://github.com/Duna-System/livox_ros2_driver)
