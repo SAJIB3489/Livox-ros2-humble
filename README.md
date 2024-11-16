@@ -17,7 +17,10 @@ This repository includes:
 
 To get started, follow the instructions provided in the respective `README.md` files within the `Dockerfile-amd64` and `Dockerfile-arm64` directories. These guides will walk you through the process of building and running the Docker images, as well as playing back rosbag files for testing and development purposes.
 
+
 ## References
 
 - [Livox SDK](https://github.com/SAJIB3489/Livox-SDK.git)
 - [Livox ROS2 Driver](https://github.com/Duna-System/livox_ros2_driver)
+
+**Thanks to [Wallner Stefan]**(https://www.fh-joanneum.at/hochschule/person/stefan-wallner/)
