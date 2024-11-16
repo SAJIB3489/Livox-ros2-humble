@@ -23,4 +23,4 @@ To get started, follow the instructions provided in the respective `README.md` f
 - [Livox SDK](https://github.com/SAJIB3489/Livox-SDK.git)
 - [Livox ROS2 Driver](https://github.com/Duna-System/livox_ros2_driver)
 
-**Thanks to [Wallner Stefan]**(https://www.fh-joanneum.at/hochschule/person/stefan-wallner/)
+**Thanks to [Wallner Stefan](https://www.fh-joanneum.at/hochschule/person/stefan-wallner/)**
